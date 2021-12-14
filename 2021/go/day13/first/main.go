@@ -48,7 +48,6 @@ func main() {
 	}
 
 	for _, list := range temp {
-		// log.Println(list[0], list[1])
 		matrix[list[1]][list[0]] = 1
 	}
 

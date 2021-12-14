@@ -33,7 +33,6 @@ func main() {
 		rules[data[0]] = data[1]
 	}
 
-	// length := len(template)
 	for i, letter := range template {
 		elem[string(letter)] += 1
 		if i > 0 {
@@ -42,14 +41,11 @@ func main() {
 	}
 
 	for i := 0; i < 40; i++ {
-		// log.Println(vmap)
 		for key := range vmap {
 			if val, ok := rules[key]; ok {
-				// vmap[key] += 1
 				elem[val] += vmap[key]
 				key1 := string(key[0]) + val
 				key2 := val + string(key[1])
-				// log.Println(key, val, " ->", key1, key2)
 				tempmap[key1] += vmap[key]
 				tempmap[key2] += vmap[key]
 			}
@@ -57,7 +53,6 @@ func main() {
 
 		vmap = tempmap
 		tempmap = make(map[string]int)
-		// log.Println("vmap -> ", vmap)
 	}
 
 	max := 0

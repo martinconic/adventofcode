@@ -42,8 +42,6 @@ func main() {
 				i++
 			}
 		}
-		// log.Println(template)
-
 	}
 
 	max := 0
@@ -60,8 +58,6 @@ func main() {
 			min = count
 		}
 	}
-	log.Println(max)
-	log.Println(min)
 
 	log.Println(max - min)
 }

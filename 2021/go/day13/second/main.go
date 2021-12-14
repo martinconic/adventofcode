@@ -107,7 +107,6 @@ func main() {
 		}
 	}
 
-	log.Println("---------------")
 	for i, value := range matrix {
 		val := value[:n]
 		log.Println(val)
