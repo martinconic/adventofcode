@@ -55,7 +55,7 @@ func main() {
 
 		cost[strconv.Itoa(i)+","+strconv.Itoa(j)] = c
 
-		if i == l1-1 && j == l2-2 {
+		if i == l1-1 && j == l2-1 {
 			break
 		}
 

@@ -35,9 +35,36 @@ func main() {
 			val, _ := strconv.Atoi(value)
 			list = append(list, val)
 		}
+		lngth := len(list)
+		for i := 0; i < 4; i++ {
+			for j := 0; j < lngth; j++ {
+				val := list[j] + (i + 1)
+				if val > 9 {
+					val -= 9
+				}
+
+				list = append(list, val)
+			}
+		}
 
 		matrix = append(matrix, list)
+	}
 
+	l1 = len(matrix)
+	l2 = len(matrix[0])
+
+	for c := 0; c < 4; c++ {
+		for k := 0; k < l1; k++ {
+			l := []int{}
+			for i := 0; i < l2; i++ {
+				val := matrix[k][i] + (c + 1)
+				if val > 9 {
+					val -= 9
+				}
+				l = append(l, val)
+			}
+			matrix = append(matrix, l)
+		}
 	}
 
 	l1 = len(matrix)
@@ -55,7 +82,7 @@ func main() {
 
 		cost[strconv.Itoa(i)+","+strconv.Itoa(j)] = c
 
-		if i == l1-1 && j == l2-2 {
+		if i == l1-1 && j == l2-1 {
 			break
 		}
 
@@ -81,7 +108,7 @@ func main() {
 }
 
 func pop() (c, i, j int) {
-	min := 1000
+	min := 1000000
 	index := 0
 	for k, value := range pq {
 		if min >= value[0] {
