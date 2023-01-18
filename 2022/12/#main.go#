@@ -56,8 +56,6 @@ func main() {
 	dist : = map[string]int{} 
 	q := []string{}
 
-	visited["00"] = 1
-	dist["00"] = hm[0][0]
 	q = append(q, "00")
 	height := 0
 	
@@ -66,11 +64,25 @@ func main() {
 		if l == 0 {
 			break
 		}
+		visited[q[l-1]] = 1
+		dist[q[l-1]] = 
 
+		vals := strings.Split(q[l-1], "")
+
+		i,_ := strconv.Atoi(vals[0])
+		j,_ : strconv.Atoi(vals[1])
+
+		if j + 1 < n && (hm[i][j+1] == hm[i][j] + 1 || hm[i][j+1] == hm[i][j]) {
+			s := strconv.Itoa(i) + strconv.Itoa(j+1)
+			if visited[s] == 0 {
+				q = append(q, s)
+			} else {
+				
+			}
+		} 
 		
 		
-		
-		//		s := strconv.Itoa(v) + strconv.Itoa(i)
+	
 			
 	
 	}
