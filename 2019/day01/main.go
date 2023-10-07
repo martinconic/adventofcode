@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"log"
 	"os"
 	"strconv"
@@ -26,6 +27,9 @@ func partTwo() {
 		}
 	}
 
+	a := []byte{}
+	b := []byte{}
+	bytes.Compare(a, b)
 	log.Println(sum)
 }
 
