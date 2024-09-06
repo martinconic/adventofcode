@@ -11,7 +11,7 @@ import (
 )
 
 func p1() {
-	file, err := os.Open("input.txt")
+	file, err := os.Open("../input/input.txt")
 	if err != nil {
 		log.Fatalf("can not open file")
 	}
@@ -37,7 +37,7 @@ func p1() {
 }
 
 func p2() {
-	file, err := os.Open("input.txt")
+	file, err := os.Open("../input/input.txt")
 	if err != nil {
 		log.Fatalf("can not open file")
 	}
