@@ -26,16 +26,12 @@ pub fn main() !void {
         var numbers = std.ArrayList(u32).init(std.heap.page_allocator);
         defer numbers.deinit();
 
-        // Iterate over each character in the line
         for (line) |c| {
-            // Check if the character is a digit
             if (std.ascii.isDigit(c)) {
-                // Convert the character to an integer and add to the list
                 _ = try numbers.append(@as(u32, @intCast(c - '0')));
             }
         }
 
-        // Ensure there are enough numbers to perform the operation
         if (numbers.items.len >= 1) {
             sum += 10 * numbers.items[0] + numbers.items[numbers.items.len - 1];
         }
