@@ -85,5 +85,5 @@ fn p2() -> io::Result<()> {
 }
 
 fn main() -> io::Result<()> {
-    return p2();
+    return p1();
 }

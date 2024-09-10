@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub fn main() !void {
+pub fn p1() !void {
     const allocator = std.heap.page_allocator;
 
     const file = try std.fs.cwd().openFile("../input/input.txt", .{});
@@ -39,4 +39,23 @@ pub fn main() !void {
     }
 
     std.debug.print("Sum: {d}\n", .{sum});
+}
+
+fn p2() !void {
+    const file = try std.fs.cwd().openFile("../input/test.txt", .{});
+    defer file.close();
+
+    var buffered = std.io.bufferedReader(file.reader());
+    var bufreader = buffered.reader();
+
+    var buffer: [1000]u8 = undefined;
+    @memset(buffer[0..], 0);
+
+    _ = try bufreader.readUntilDelimiterOrEof(buffer[0..], '\r');
+
+    std.debug.print("{s}\n", .{buffer});
+}
+
+pub fn main() !void {
+    try p1();
 }
