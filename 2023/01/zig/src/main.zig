@@ -1,5 +1,7 @@
 const std = @import("std");
 
+const data = @embedFile("input.txt");
+
 pub fn p1() !void {
     const allocator = std.heap.page_allocator;
 
@@ -56,6 +58,28 @@ fn p2() !void {
     std.debug.print("{s}\n", .{buffer});
 }
 
+fn p3() !void {
+    var it = std.mem.tokenize(u8, data, "\n");
+
+    var sum: u32 = 0;
+    while (it.next()) |line| {
+        var numbers = std.ArrayList(u32).init(std.heap.page_allocator);
+        defer numbers.deinit();
+
+        for (line) |c| {
+            if (std.ascii.isDigit(c)) {
+                _ = try numbers.append(@as(u32, @intCast(c - '0')));
+            }
+        }
+
+        if (numbers.items.len >= 1) {
+            sum += 10 * numbers.items[0] + numbers.items[numbers.items.len - 1];
+        }
+    }
+
+    std.debug.print("Sum: {d}\n", .{sum});
+}
+
 pub fn main() !void {
-    try p1();
+    try p3();
 }
