@@ -53,43 +53,45 @@ func partTwo() {
 	}
 
 	defer file.Close()
-
 	scanner := bufio.NewScanner(file)
 	scanner.Scan()
 	strvalues := strings.Split(scanner.Text(), ",")
-	firstValues := []int{}
-	values := []int{}
+	ovalues := []int{}
 	for _, v := range strvalues {
 		intValue, _ := strconv.Atoi(v)
-		firstValues = append(firstValues, intValue)
+		ovalues = append(ovalues, intValue)
 	}
-	firstValues[1] = 12
-	firstValues[2] = 2
 
-	values = firstValues
-	for i := 0; i < len(firstValues)-3; {
-		values = firstValues
+	for x := 0; x <= 99; x++ {
+		for y := 0; y <= 99; y++ {
 
-		if values[i] == 99 {
-			// log.Println(values[0])
-			i++
-			continue
-		}
-		if values[i] == 1 {
-			values[values[i+3]] = values[values[i+1]] + values[values[i+2]]
-		}
-		if values[i] == 2 {
-			values[values[i+3]] = values[values[i+1]] * values[values[i+2]]
-		}
+			values := make([]int, len(ovalues))
+			copy(values, ovalues)
+			values[1] = x
+			values[2] = y
 
-		if values[0] == 19690720 {
-			log.Println(values[0])
-			log.Println(100*values[i+1] + values[i+2])
-			log.Println(100*values[1] + values[2])
-			return
-		}
+			for i := 0; i < len(values)-3; i += 4 {
+				// if values[i+3] >= len(values) || values[i+1] >= len(values) || values[i+2] >= len(values) {
+				// break
+				// }
 
-		i += 4
+				if values[i] == 99 {
+					if values[0] == 19690720 {
+						log.Println(values[0], 100*x+y)
+						return
+					}
+
+					break
+				}
+				if values[i] == 1 {
+					values[values[i+3]] = values[values[i+1]] + values[values[i+2]]
+				}
+				if values[i] == 2 {
+					values[values[i+3]] = values[values[i+1]] * values[values[i+2]]
+				}
+			}
+
+		}
 	}
 }
 
